@@ -13,7 +13,7 @@ struct PhridgeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Start()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

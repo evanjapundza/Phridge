@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		DA4BF33929760A98001603E4 /* PhridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF33829760A98001603E4 /* PhridgeApp.swift */; };
-		DA4BF33B29760A98001603E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF33A29760A98001603E4 /* ContentView.swift */; };
 		DA4BF33D29760A9A001603E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF33C29760A9A001603E4 /* Assets.xcassets */; };
 		DA4BF34029760A9A001603E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF33F29760A9A001603E4 /* Preview Assets.xcassets */; };
 		DA4BF34229760A9A001603E4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF34129760A9A001603E4 /* Persistence.swift */; };
 		DA4BF34529760A9A001603E4 /* Phridge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF34329760A9A001603E4 /* Phridge.xcdatamodeld */; };
+		DA4BF35029760CC7001603E4 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF34F29760CC7001603E4 /* Start.swift */; };
+		DA4BF3542978731A001603E4 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF3532978731A001603E4 /* Swipe.swift */; };
+		DA4BF359297DADDD001603E4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF358297DADDD001603E4 /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA4BF33529760A98001603E4 /* Phridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4BF33829760A98001603E4 /* PhridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhridgeApp.swift; sourceTree = "<group>"; };
-		DA4BF33A29760A98001603E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA4BF33C29760A9A001603E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA4BF33F29760A9A001603E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA4BF34129760A9A001603E4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA4BF34429760A9A001603E4 /* Phridge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Phridge.xcdatamodel; sourceTree = "<group>"; };
+		DA4BF34F29760CC7001603E4 /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
+		DA4BF3532978731A001603E4 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
+		DA4BF358297DADDD001603E4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 		DA4BF33729760A98001603E4 /* Phridge */ = {
 			isa = PBXGroup;
 			children = (
+				DA4BF34E29760C8F001603E4 /* View */,
+				DA4BF34D29760C88001603E4 /* ViewModel */,
+				DA4BF34B29760C71001603E4 /* Model */,
 				DA4BF33829760A98001603E4 /* PhridgeApp.swift */,
-				DA4BF33A29760A98001603E4 /* ContentView.swift */,
 				DA4BF33C29760A9A001603E4 /* Assets.xcassets */,
 				DA4BF34129760A9A001603E4 /* Persistence.swift */,
 				DA4BF34329760A9A001603E4 /* Phridge.xcdatamodeld */,
@@ -71,6 +77,30 @@
 				DA4BF33F29760A9A001603E4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA4BF34B29760C71001603E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA4BF34D29760C88001603E4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA4BF34E29760C8F001603E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA4BF34F29760CC7001603E4 /* Start.swift */,
+				DA4BF3532978731A001603E4 /* Swipe.swift */,
+				DA4BF358297DADDD001603E4 /* Menu.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +119,8 @@
 			dependencies = (
 			);
 			name = Phridge;
+			packageProductDependencies = (
+			);
 			productName = Phridge;
 			productReference = DA4BF33529760A98001603E4 /* Phridge.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +149,8 @@
 				Base,
 			);
 			mainGroup = DA4BF32C29760A98001603E4;
+			packageReferences = (
+			);
 			productRefGroup = DA4BF33629760A98001603E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,8 +177,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4BF359297DADDD001603E4 /* Menu.swift in Sources */,
+				DA4BF3542978731A001603E4 /* Swipe.swift in Sources */,
 				DA4BF34229760A9A001603E4 /* Persistence.swift in Sources */,
-				DA4BF33B29760A98001603E4 /* ContentView.swift in Sources */,
+				DA4BF35029760CC7001603E4 /* Start.swift in Sources */,
 				DA4BF33929760A98001603E4 /* PhridgeApp.swift in Sources */,
 				DA4BF34529760A9A001603E4 /* Phridge.xcdatamodeld in Sources */,
 			);
@@ -281,8 +317,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,8 +346,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
