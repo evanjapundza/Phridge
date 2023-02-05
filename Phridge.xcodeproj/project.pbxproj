@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA11B78C298194EC0098729E /* RecipeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11B78B298194EC0098729E /* RecipeSearch.swift */; };
+		DA11B78E2981D8C50098729E /* RecipeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11B78D2981D8C50098729E /* RecipeSearchViewModel.swift */; };
+		DA11B7902981DC640098729E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11B78F2981DC640098729E /* ContentView.swift */; };
+		DA11B7922985D1F80098729E /* top-1k-ingredients.csv in Resources */ = {isa = PBXBuildFile; fileRef = DA11B7912985D1F80098729E /* top-1k-ingredients.csv */; };
+		DA11B7942986D4D30098729E /* IngredientSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11B7932986D4D30098729E /* IngredientSelection.swift */; };
+		DA11B7972986D5710098729E /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = DA11B7962986D5710098729E /* CSV */; };
 		DA4BF33929760A98001603E4 /* PhridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF33829760A98001603E4 /* PhridgeApp.swift */; };
 		DA4BF33D29760A9A001603E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF33C29760A9A001603E4 /* Assets.xcassets */; };
 		DA4BF34029760A9A001603E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4BF33F29760A9A001603E4 /* Preview Assets.xcassets */; };
@@ -18,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA11B78B298194EC0098729E /* RecipeSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearch.swift; sourceTree = "<group>"; };
+		DA11B78D2981D8C50098729E /* RecipeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewModel.swift; sourceTree = "<group>"; };
+		DA11B78F2981DC640098729E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DA11B7912985D1F80098729E /* top-1k-ingredients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "top-1k-ingredients.csv"; path = "/Users/evanjapundza/Desktop/PhridgeProj/Phridge/Phridge/top-1k-ingredients.csv"; sourceTree = "<absolute>"; };
+		DA11B7932986D4D30098729E /* IngredientSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelection.swift; sourceTree = "<group>"; };
 		DA4BF33529760A98001603E4 /* Phridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4BF33829760A98001603E4 /* PhridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhridgeApp.swift; sourceTree = "<group>"; };
 		DA4BF33C29760A9A001603E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA11B7972986D5710098729E /* CSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,10 +71,12 @@
 		DA4BF33729760A98001603E4 /* Phridge */ = {
 			isa = PBXGroup;
 			children = (
+				DA11B7912985D1F80098729E /* top-1k-ingredients.csv */,
 				DA4BF34E29760C8F001603E4 /* View */,
 				DA4BF34D29760C88001603E4 /* ViewModel */,
 				DA4BF34B29760C71001603E4 /* Model */,
 				DA4BF33829760A98001603E4 /* PhridgeApp.swift */,
+				DA11B78F2981DC640098729E /* ContentView.swift */,
 				DA4BF33C29760A9A001603E4 /* Assets.xcassets */,
 				DA4BF34129760A9A001603E4 /* Persistence.swift */,
 				DA4BF34329760A9A001603E4 /* Phridge.xcdatamodeld */,
@@ -82,6 +96,7 @@
 		DA4BF34B29760C71001603E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DA11B78B298194EC0098729E /* RecipeSearch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,6 +104,8 @@
 		DA4BF34D29760C88001603E4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DA11B7932986D4D30098729E /* IngredientSelection.swift */,
+				DA11B78D2981D8C50098729E /* RecipeSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -120,6 +137,7 @@
 			);
 			name = Phridge;
 			packageProductDependencies = (
+				DA11B7962986D5710098729E /* CSV */,
 			);
 			productName = Phridge;
 			productReference = DA4BF33529760A98001603E4 /* Phridge.app */;
@@ -150,6 +168,7 @@
 			);
 			mainGroup = DA4BF32C29760A98001603E4;
 			packageReferences = (
+				DA11B7952986D5710098729E /* XCRemoteSwiftPackageReference "CSV.swift" */,
 			);
 			productRefGroup = DA4BF33629760A98001603E4 /* Products */;
 			projectDirPath = "";
@@ -166,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4BF34029760A9A001603E4 /* Preview Assets.xcassets in Resources */,
+				DA11B7922985D1F80098729E /* top-1k-ingredients.csv in Resources */,
 				DA4BF33D29760A9A001603E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,12 +197,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA11B78E2981D8C50098729E /* RecipeSearchViewModel.swift in Sources */,
 				DA4BF359297DADDD001603E4 /* Menu.swift in Sources */,
 				DA4BF3542978731A001603E4 /* Swipe.swift in Sources */,
 				DA4BF34229760A9A001603E4 /* Persistence.swift in Sources */,
+				DA11B78C298194EC0098729E /* RecipeSearch.swift in Sources */,
+				DA11B7902981DC640098729E /* ContentView.swift in Sources */,
 				DA4BF35029760CC7001603E4 /* Start.swift in Sources */,
 				DA4BF33929760A98001603E4 /* PhridgeApp.swift in Sources */,
 				DA4BF34529760A9A001603E4 /* Phridge.xcdatamodeld in Sources */,
+				DA11B7942986D4D30098729E /* IngredientSelection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +407,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA11B7952986D5710098729E /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA11B7962986D5710098729E /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA11B7952986D5710098729E /* XCRemoteSwiftPackageReference "CSV.swift" */;
+			productName = CSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DA4BF34329760A9A001603E4 /* Phridge.xcdatamodeld */ = {

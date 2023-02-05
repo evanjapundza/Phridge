@@ -11,6 +11,8 @@ struct Menu: View {
     
     @Binding var isSidebarVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
+    @State var temp1 = IngredientSelection()
+    @ObservedObject var select = Selection()
     
     var body: some View {
         ZStack {
@@ -25,43 +27,66 @@ struct Menu: View {
                 isSidebarVisible.toggle()
                 
             }
+            
+            
             content
         }
         .edgesIgnoringSafeArea(.all)
     }
     
     var content: some View {
+        
         HStack {
             ZStack {
-                LinearGradient(colors: [Color(0x9600ff), Color(0xAEBA)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(colors: [Color(0xd9adfa), Color(0x9969C7), Color(0x6A359C)], startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Button {
-                        print("but 1")
-                    } label: {
-                        Text("Ingredient List")
+                    
+                    Button(action: {
+                        temp1.populateIngredientList()
+                        select.showSelection.toggle()
+                    }) {
+                        HStack{
+                            Image(systemName: "pencil")
+                                .foregroundColor(Color.white)
+                            Text("Edit Ingredients")
+                                .foregroundColor(Color.white)
+                                .font(Font.headline.weight(.bold))
+                                //.background(Color.blue)
+                                //.cornerRadius(10)
+                        }
+                        .frame(width: 250, height: 25)
+                        .padding(10)
+                        
                     }
-                    .frame(width: 150, height: 25)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    .sheet(isPresented: $select.showSelection) {
+                        IngredientSelection()
+                    }
+                    
+                    
+                    
                     
                     Button {
                         print("but 2")
                     } label: {
-                        Text("Favorites")
+                        HStack {
+                            Image(systemName: "star")
+                                .foregroundColor(Color.white)
+                            Text("Favorites")
+                                .font(Font.headline.weight(.bold))
+                        }
                     }
-                    .frame(width: 150, height: 25)
-                    .padding()
+                    .frame(width: 250, height: 25)
+                    .padding(10)
                     .foregroundColor(Color.white)
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    //.background(Color.blue)
+                    //.cornerRadius(10)
                     
                     Spacer()
                 }
-
+                .padding(.vertical, 100)
+                
                 
             }
             .frame(width: sideBarWidth)
@@ -70,6 +95,7 @@ struct Menu: View {
             
             Spacer()
         }
+  
     }
 }
 
