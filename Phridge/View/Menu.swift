@@ -12,7 +12,9 @@ struct Menu: View {
     @Binding var isSidebarVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
     @State var temp1 = IngredientSelection()
-    @ObservedObject var select = Selection()
+    @ObservedObject var selection = Selection()
+    @State var temp2 = StartModel()
+    
     
     var body: some View {
         ZStack {
@@ -42,10 +44,11 @@ struct Menu: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                
                     
                     Button(action: {
                         temp1.populateIngredientList()
-                        select.showSelection.toggle()
+                        selection.showSelection.toggle()
                     }) {
                         HStack{
                             Image(systemName: "pencil")
@@ -60,10 +63,15 @@ struct Menu: View {
                         .padding(10)
                         
                     }
-                    .sheet(isPresented: $select.showSelection) {
+                    .sheet(isPresented: $selection.showSelection, onDismiss: {
+                        var testing: [Ingredient] = []
+                        for ing in selectedIngredientDictionary {
+                            testing.append(ing.value)
+                        }
+                        temp2.searchByIngredients(ingredients: testing)
+                    }) {
                         IngredientSelection()
                     }
-                    
                     
                     
                     
@@ -82,6 +90,34 @@ struct Menu: View {
                     .foregroundColor(Color.white)
                     //.background(Color.blue)
                     //.cornerRadius(10)
+                    Button {
+                        print("but 2")
+                    } label: {
+                        HStack {
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(Color.white)
+                            Text("Likes")
+                                .font(Font.headline.weight(.bold))
+                        }
+                    }
+                    .frame(width: 250, height: 25)
+                    .padding(10)
+                    .foregroundColor(Color.white)
+                    
+                    
+                    Button {
+                        print("but 2")
+                    } label: {
+                        HStack {
+                            Image(systemName: "x.circle")
+                                .foregroundColor(Color.white)
+                            Text("Dislikes")
+                                .font(Font.headline.weight(.bold))
+                        }
+                    }
+                    .frame(width: 250, height: 25)
+                    .padding(10)
+                    .foregroundColor(Color.white)
                     
                     Spacer()
                 }

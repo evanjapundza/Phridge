@@ -9,27 +9,18 @@ import SwiftUI
 
 class RecipeSearchViewModel: ObservableObject {
     
-    @Published var fetched_users: [RecipeSearch] = []
+    @Published var fetched_users: [Recipe] = []
+    @Published var ingredient_list: [Int: Ingredient] = [:]
     
-    @Published var displaying_users: [RecipeSearch]?
     
-    init(){
-        
-        
-        fetched_users = [
-            RecipeSearch(name: ".", place: ".", profilePic: "highres"),
-            RecipeSearch(name: ".", place: ".", profilePic: "highres2"),
-            RecipeSearch(name: ".", place: ".", profilePic: "highres3"),
-            RecipeSearch(name: ".", place: ".", profilePic: "highres4"),
-            RecipeSearch(name: ".", place: ".", profilePic: "highres5")
-        ]
-
-        displaying_users = fetched_users
+    init() {
+        fetched_users.append(Recipe(id: 00001, title: "Testing Card", image: "highres1", usedIngredientCount: 0, missedIngredientCount: 0))
+        fetched_users.append(Recipe(id: 00002, title: "Testing Card 2", image: "highres1", usedIngredientCount: 0, missedIngredientCount: 0))
     }
     
-    func getIndex(user: RecipeSearch)->Int {
+    func getIndex(user: Recipe)->Int {
         
-        let index = displaying_users?.firstIndex(where: {currentUser in
+        let index = fetched_users.firstIndex(where: {currentUser in
             return user.id == currentUser.id
         }) ?? 0
         

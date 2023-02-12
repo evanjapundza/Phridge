@@ -21,6 +21,7 @@
 		DA4BF35029760CC7001603E4 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF34F29760CC7001603E4 /* Start.swift */; };
 		DA4BF3542978731A001603E4 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF3532978731A001603E4 /* Swipe.swift */; };
 		DA4BF359297DADDD001603E4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF358297DADDD001603E4 /* Menu.swift */; };
+		DADF1A232997C45800316347 /* StartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF1A222997C45800316347 /* StartModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		DA4BF34F29760CC7001603E4 /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
 		DA4BF3532978731A001603E4 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		DA4BF358297DADDD001603E4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		DADF1A222997C45800316347 /* StartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				DA11B78B298194EC0098729E /* RecipeSearch.swift */,
+				DADF1A222997C45800316347 /* StartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				DA11B78C298194EC0098729E /* RecipeSearch.swift in Sources */,
 				DA11B7902981DC640098729E /* ContentView.swift in Sources */,
 				DA4BF35029760CC7001603E4 /* Start.swift in Sources */,
+				DADF1A232997C45800316347 /* StartModel.swift in Sources */,
 				DA4BF33929760A98001603E4 /* PhridgeApp.swift in Sources */,
 				DA4BF34529760A9A001603E4 /* Phridge.xcdatamodeld in Sources */,
 				DA11B7942986D4D30098729E /* IngredientSelection.swift in Sources */,

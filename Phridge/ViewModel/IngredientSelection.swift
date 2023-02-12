@@ -18,6 +18,7 @@ var ingredientDictionary: [Int: Ingredient] = [:]
 var selectedIngredientDictionary: [Int: Ingredient] = [:]
 
 
+
 class Selection: ObservableObject {
     @Published var showSelection = false
 }
@@ -78,6 +79,7 @@ struct IngredientSelection: View {
         NavigationView {
             VStack {
                 
+                
                 List(Array(filteredIngredients.keys), id: \.self, selection: $selectedRows) { key in
                     IngredientListRows(ingredient: filteredIngredients[key]!, selectedIngredients: self.$selectedRows)
                 }
@@ -97,6 +99,8 @@ struct IngredientSelection: View {
                 
             }
         }
+        
+
         
     }
 }

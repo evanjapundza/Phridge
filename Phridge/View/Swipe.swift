@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct Swipe: View {
-    @EnvironmentObject var startData: RecipeSearchViewModel
-    var user: RecipeSearch
+    @ObservedObject var startData: RecipeSearchViewModel
+    var user: Recipe
     
     @State var offset: CGFloat = 0
     @GestureState var isDragging: Bool = false
     @State var endSwipe: Bool = false
+    @State private var image: UIImage?
     
     var body: some View {
         
@@ -25,22 +26,38 @@ struct Swipe: View {
             let topOffset = (index <= 2 ? index : 2) * 15
             ZStack() {
                 
-                Image(user.profilePic)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                Color.gray
                     .frame(width: size.width-topOffset, height: size.height)
                     .cornerRadius(10)
                     .offset(y: -topOffset)
                 
+                
+                Image(uiImage: image ?? UIImage())
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: size.width-topOffset, height: size.height)
+                    .cornerRadius(10)
+                    .offset(y: -topOffset)
+                    .onAppear(perform: loadImage)
+                
                 VStack(alignment: .leading) {
+                    HStack {
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "info.square.fill")
+                        }
+                    }
+                    
                     Spacer()
-                    Text(user.name)
+                    Text(user.title)
                         .foregroundColor(Color.white)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    Text(user.place)
-                        .foregroundColor(Color.white)
-                        .font(.title)
+                    //Text("\(user.id)")
+                        //.foregroundColor(Color.white)
+                        //.font(.title)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
@@ -72,10 +89,10 @@ struct Swipe: View {
                             endSwipeActions()
                             
                             if translation > 0 {
-                                rightSwipe()
+                                rightSwipe(currentRecipe: user)
                             }
                             else {
-                                leftSwipe()
+                                leftSwipe(currentRecipe: user)
                             }
                         }
                         else {
@@ -95,17 +112,17 @@ struct Swipe: View {
             let rightSwipe = info["rightSwipe"] as? Bool ?? false
             let width = getRect().width - 50
             
-            if user.id == id{
+            if String(user.id) == id{
                 
                 withAnimation{
                     offset = (rightSwipe ? width : -width) * 2
                     endSwipeActions()
                     
                     if rightSwipe {
-                        self.rightSwipe()
+                        self.rightSwipe(currentRecipe: user)
                     }
                     else {
-                        leftSwipe()
+                        leftSwipe(currentRecipe: user)
                     }
                 }
             }
@@ -126,22 +143,33 @@ struct Swipe: View {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             
-            if let _ = startData.displaying_users?.first {
+            if let _ = startData.fetched_users.first {
                 
                 let _ = withAnimation {
-                    startData.displaying_users?.removeFirst()
+                    startData.fetched_users.removeFirst()
                 }
             }
         }
     }
     
-    func leftSwipe() {
+    func leftSwipe(currentRecipe: Recipe) {
         
     }
     
-    func rightSwipe() {
+    func rightSwipe(currentRecipe: Recipe) {
         
     }
+    
+    func loadImage() {
+        let url = URL(string: user.image)!
+            URLSession.shared.dataTask(with: url) { [self] (data, response, error) in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
+                }
+            }.resume()
+        }
 }
 
 struct Swipe_Previews: PreviewProvider {

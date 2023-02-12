@@ -10,20 +10,20 @@ import UIKit
 
 struct Start: View {
     
-    @StateObject var startData: RecipeSearchViewModel = RecipeSearchViewModel()
+    
+    @ObservedObject private var startData = RecipeSearchViewModel()
     @State private var showMenu = false
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
-
-    var theModel = RecipeSearchModel()
-    @ObservedObject var selection = Selection()
     
+    var myStartModel: StartModel = StartModel()
+
+    @ObservedObject var selection = Selection()
 
     
     @State var temp1 = IngredientSelection()
     
     var body: some View {
         
-        //self.environmentObject(Selection())
         
         ZStack {
             
@@ -53,7 +53,7 @@ struct Start: View {
                     HStack {
                         Button {
                             print("left swipe")
-                            doSwipe()
+                            myStartModel.doSwipe()
                         } label: {
                             Image(systemName: "x.circle.fill")
                                 .font(.system(size: 60, weight: .bold))
@@ -61,29 +61,11 @@ struct Start: View {
                                 .shadow(radius: 5)
                                 .padding()
                         }
+
                         
-                        VStack {
-                            Button {
-                                print("maybe swipe")
-                            } label: {
-                                Image(systemName: "questionmark.circle.fill")
-                                    .font(.system(size: 60, weight: .bold))
-                                    .foregroundColor(Color.yellow)
-                                    .shadow(radius: 5)
-                            }
-                            
-                            Button {
-                                print("undo swipe")
-                            } label: {
-                                Image(systemName: "arrow.uturn.left.circle.fill")
-                                    .font(.system(size: 60, weight: .bold))
-                                    .foregroundColor(Color.black)
-                                    .shadow(radius: 5)
-                            }
-                        }
                         Button {
                             print("right swipe")
-                            doSwipe(rightSwipe: true)
+                            myStartModel.doSwipe(rightSwipe: true)
                         } label: {
                             Image(systemName: "heart.circle.fill")
                                 .font(.system(size: 60, weight: .bold))
@@ -95,11 +77,11 @@ struct Start: View {
 
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    .disabled(startData.displaying_users?.isEmpty ?? false)
-                    .opacity((startData.displaying_users?.isEmpty ?? false) ? 0.6 : 1)
+                    //.disabled(startData.fetched_users)
+                    .opacity((myStartModel.startData.fetched_users.isEmpty) ? 0.6 : 1)
                     
                     ZStack {
-                        if let users = startData.displaying_users {
+                        if let users = myStartModel.startData.fetched_users {
                             
                             if users.isEmpty {
                                 VStack {
@@ -118,17 +100,25 @@ struct Start: View {
                                     .foregroundColor(Color.white)
                                     .background(Color.blue)
                                     .cornerRadius(10)
-                                    .sheet(isPresented: $selection.showSelection) {
+                                    .sheet(isPresented: $selection.showSelection, onDismiss: {
+                                        var testing: [Ingredient] = []
+                                        for ing in selectedIngredientDictionary {
+                                            testing.append(ing.value)
+                                        }
+                                        myStartModel.searchByIngredients(ingredients: testing)
+                                    }) {
                                         IngredientSelection()
                                     }
+                                    
                                     
                                 }
                             }
                             else {
-                                ForEach(users.reversed()) { user in
+                                
+                                ForEach(users.reversed(), id: \.id) { user in
                                     
-                                    Swipe(user: user)
-                                        .environmentObject(startData)
+                                    Swipe(startData: myStartModel.startData, user: user)
+                                        .environmentObject(myStartModel.startData)
                                 }
                             }
                         }
@@ -143,26 +133,8 @@ struct Start: View {
                 }
 
             }
-            
-            
-            
-            
-            
             Menu(isSidebarVisible: $showMenu)
         }
-    }
-    
-    func doSwipe(rightSwipe: Bool = false) {
-        
-        guard let first = startData.displaying_users?.first else {
-            return
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name("BUTTONACTION"), object: nil, userInfo: [
-            
-            "id": first.id,
-            "rightSwipe": rightSwipe
-        ])
     }
     
     
@@ -184,11 +156,5 @@ extension Color {
             blue: Double(hex & 0xFF) / 255,
             opacity: alpha
         )
-    }
-}
-
-struct Previews_Start_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
